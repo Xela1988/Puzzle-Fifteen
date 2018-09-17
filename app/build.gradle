@@ -6,17 +6,6 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 // Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
-    signingConfigs {
-        config {
-            keyAlias 'MyAndroidKeyPuzzleFifteen'
-            keyPassword 'qwerty00'
-            storeFile file('C:/Users/Alex/Desktop/fonts per App/firma per generare apk/puzzlefifteen.jks')
-            storePassword 'qwerty00'
-        }
-    }
     defaultConfig {
         applicationId "redmcrosco.alex.puzzlefifteen"
         minSdkVersion 19
