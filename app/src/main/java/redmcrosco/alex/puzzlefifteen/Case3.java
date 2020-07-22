@@ -23,11 +23,11 @@ import java.util.ArrayList;
  * Created by Alex on 22/10/2017.
  */
 public class Case3 extends AppCompatActivity implements View.OnClickListener {
-    private static final int n = 3; // размерность поля (campo dimensione): n*n
+    private static final Integer n = 3; // размерность поля (campo dimensione): n*n
     private Button[] buttons; //массив ячеек (array di celle)
-    private int indexEmpty; //индекс пустой ячейки (indice cella vuota)
-    private int indexes[]; //хранит индексы ячеек (negozi indici cella)
-    private int countPressBtn = 0; //хранит кол-во ходов (memorizza i numero di colpi)
+    private Integer indexEmpty; //индекс пустой ячейки (indice cella vuota)
+    private Integer indexes[]; //хранит индексы ячеек (negozi indici cella)
+    private Integer countPressBtn = 0; //хранит кол-во ходов (memorizza i numero di colpi)
     private TextView textView; //выводит кол-во ходов (esso mostra il numero di colpi)
     // queste due rows mi servono per salvare
     private Button buttonSave;
@@ -46,14 +46,14 @@ public class Case3 extends AppCompatActivity implements View.OnClickListener {
         //prova per caricare eventuali schemi
         mListView = (ListView) findViewById(R.id.text_list_view);
         buttons = new Button[n * n];
-        indexes = new int[n * n];
+        indexes = new Integer[n * n];
         mSaveGame = new SaveGame(this);
-        int[] numbers = RandomOrder.getShuffleArray(0, n * n, n); //массив с числами в случайном порядке (una serie di numeri casuali)
+        Integer[] numbers = RandomOrder.getShuffleArray(0, n * n, n); //массив с числами в случайном порядке (una serie di numeri casuali)
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout3);
 
         Button btn;
-        for (int i = 0; i < n * n; i++) {
+        for (Integer i = 0; i < n * n; i++) {
             btn = (Button) gridLayout.getChildAt(i);
             if (numbers[i] == 0) {
                 btn.setVisibility(View.INVISIBLE);
@@ -76,10 +76,10 @@ public class Case3 extends AppCompatActivity implements View.OnClickListener {
         // String newEntry = editText.getText().toString();
 
         //ячейка, которая была нажата (cella che è stato cliccato)
-        int number = Integer.parseInt(((Button) v).getText().toString());
+        Integer number = Integer.parseInt(((Button) v).getText().toString());
 
         //индекс ячейки (indice delle celle)
-        int idxPressBtn = indexes[number];
+        Integer idxPressBtn = indexes[number];
 
         if (((idxPressBtn == indexEmpty - 1) & ((idxPressBtn + 1) % n != 0)) ||
                 ((idxPressBtn == indexEmpty + 1) & (idxPressBtn % (n) != 0)) ||
@@ -106,9 +106,9 @@ public class Case3 extends AppCompatActivity implements View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     private void startNewGame() {
-        int[] numbers = RandomOrder.getShuffleArray(0, n * n, n);
+        Integer[] numbers = RandomOrder.getShuffleArray(0, n * n, n);
         buttons[indexEmpty].setVisibility(View.VISIBLE);
-        for (int i = 0; i < n * n; i++) {
+        for (Integer i = 0; i < n * n; i++) {
             indexes[numbers[i]] = i;
             if (numbers[i] != 0)
                 buttons[i].setText(String.valueOf(numbers[i]));
@@ -127,7 +127,7 @@ public class Case3 extends AppCompatActivity implements View.OnClickListener {
 
     //creata prova per salvare effettuo il parse di n in String
     @SuppressLint("SetTextI18n")
-    private void salvaGame(int n) {
+    private void salvaGame(Integer n) {
         String parsataIntN = String.valueOf(n);
         boolean insertData = mSaveGame.salvaGame(parsataIntN);
         if (insertData) {
@@ -154,7 +154,7 @@ public class Case3 extends AppCompatActivity implements View.OnClickListener {
     // la soluzione
 
     private boolean isSolve() {
-        for (int i = 1; i < indexes.length - 1; i++)
+        for (Integer i = 1; i < indexes.length - 1; i++)
             if (indexes[i] != i - 1) return false;
 
         return true;

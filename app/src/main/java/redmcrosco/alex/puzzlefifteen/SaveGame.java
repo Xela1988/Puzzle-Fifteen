@@ -23,7 +23,7 @@ import android.database.sqlite.SQLiteOpenHelper;
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        public void onUpgrade(SQLiteDatabase db, Integer oldVersion, Integer newVersion) {
             db.execSQL("DROP IF TABLE EXISTS" + TABLE_NAME);
         }
         public boolean salvaGame (String item1) {
